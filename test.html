@@ -13,7 +13,7 @@
     try {
       var j = JSON.parse(line);
       console.log("Received JSON: ",j);
-      elements.ACL.setValue(j.acc.x);
+      elements.ACL.setValue(j.x);
     } catch(e) {
       console.log("Received: ",line);
     }
