@@ -30,7 +30,7 @@ $(document).ready(function () {
                           {
                             drawPoints: true,
                             showRoller: true,
-                            digitsAfterDecimal: 3,
+            digitsAfterDecimal: 3,
                             dateWindow: [date_win_min, date_win_max],
                             // valueRange: [980, 1020],
                             labels: ['Time', 'Pressure'],
@@ -74,8 +74,8 @@ date_win_max] } );
               //      alert("In Puck connect");
                       if (!c) {
                       alert("Couldn't connect!");
-                          return;
-                        }
+                          return;   
+                             }
                         connection = c;               
                   // Handle the data we get back, and call 'onLine'
                   // whenever we get a line
@@ -99,7 +99,8 @@ function savemyCSV() {
             dataString = diff_time.toFixed(0) + ',' + dataArray[1].toFixed(3);
             csvContent += index < data.length ? dataString + '\n' : dataString;
       });
-      // The download function takes a CSV string, the filename and mimeType as parameters
+      // The download function takes a CSV string, the filename and mimeType as 
+parameters
       // Scroll/look down at the bottom of this snippet to see how download is called
       var download = function(content, fileName, mimeType) {
                   var a = document.createElement('a');
@@ -118,8 +119,7 @@ encodeURIComponent(content); // only this mime type is supported
                   }
             }
             download(csvContent, 'Puck.csv', 'text/csv;encoding:utf-8');      
-}     // end savemyCSV();     
-
+}     // end savemyCSV();
       xconnect.addEventListener("click", function () { bluetooth_connect() } );
       savemy_CSV.addEventListener("click", function () { savemyCSV() } );
       rec_startstop.addEventListener("click", function () { startstop_record() } );
