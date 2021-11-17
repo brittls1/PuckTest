@@ -7,8 +7,7 @@
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>      
 <script type="text/javascript" 
 src="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.js"></script>
-<link rel="stylesheet" 
-href="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.css" />
 </head>
 <body>
 <div id="div_g" style="width:1200px; height:600px;"></div>
@@ -21,7 +20,7 @@ $(document).ready(function () {
       var xconnect = document.getElementById("myPuck_connect");
       var savemy_CSV = document.getElementById("my_Savedata");
       var rec_startstop = document.getElementById("myrecord_start"); 
-      var taxis_increment = 10 * 1000;           /// axis increment in milliseconds
+      var taxis_increment = 10 * 1000;           // axis increment in milliseconds
       var t = new Date();
       data.push([t, 1000.000]);
       var date_win_min = t.getTime();
@@ -30,7 +29,7 @@ $(document).ready(function () {
                           {
                             drawPoints: true,
                             showRoller: true,
-       digitsAfterDecimal: 3,
+                            digitsAfterDecimal: 3,
                             dateWindow: [date_win_min, date_win_max],
                             // valueRange: [980, 1020],
                             labels: ['Time', 'Pressure'],
@@ -43,8 +42,7 @@ $(document).ready(function () {
                         if ( x.getTime() >= date_win_max) {
                                     date_win_min += taxis_increment;
                                      date_win_max += taxis_increment;
-                                     g.updateOptions( { dateWindow : [date_win_min, 
-date_win_max] } );
+                                     g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
                         };
                         data.push([x, y]);
                         g.updateOptions( { 'file': data } );
@@ -58,8 +56,7 @@ date_win_max] } );
                               connection.write("clearInterval(1)\n", function() { });
                         } else {
                               data.splice(0,data.length);
-                              connection.write("setInterval(function()
-{Bluetooth.println(ecg().toFixed(3));} ,20); \n", function() { });
+                              connection.write("setInterval(function(){Bluetooth.println(RespRate().toFixed(3));} ,20); \n", function() { });
                               t = new Date();
                               start_time = t;
                               var date_win_min = t.getTime();
@@ -99,8 +96,7 @@ function savemyCSV() {
             dataString = diff_time.toFixed(0) + ',' + dataArray[1].toFixed(3);
             csvContent += index < data.length ? dataString + '\n' : dataString;
       });
-      // The download function takes a CSV string, the filename and mimeType as 
-parameters
+      // The download function takes a CSV string, the filename and mimeType as parameters
       // Scroll/look down at the bottom of this snippet to see how download is called
       var download = function(content, fileName, mimeType) {
                   var a = document.createElement('a');
@@ -114,8 +110,8 @@ parameters
                   a.click();
                   document.body.removeChild(a);
                   } else {
-                        location.href = 'data:application/octet-stream,' + 
-encodeURIComponent(content); // only this mime type is supported
+                        location.href = 'data:application/octet-stream,' + encodeURIComponent(content);
+                        // only this mime type is supported
                   }
             }
             download(csvContent, 'Puck.csv', 'text/csv;encoding:utf-8');      
